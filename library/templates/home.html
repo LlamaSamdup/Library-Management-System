@@ -2,97 +2,109 @@
 <html>
 <head>
     <title>Library Management System</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Library Management System</h1>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Library Management System</h1>
 
-    <h2>Books</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Index</th>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for book in books %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ book.title }}</td>
-                <td>{{ book.author.name }}</td>
-                <td>{{ book.category.name }}</td>
-                <td>
-                    <a href="{% url 'book_update' book.id %}">Edit</a> |
-                    <a href="{% url 'book_delete' book.id %}">Delete</a> |
-                    <a href="{% url 'download_book' book.id %}">Download</a>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="5">No books available.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <a href="{% url 'book_create' %}">Add New Book</a>
+        <!-- Books Section -->
+        <h2 class="mb-3">Books</h2>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.author.name }}</td>
+                    <td>{{ book.category.name }}</td>
+                    <td>
+                        <a href="{% url 'book_update' book.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{% url 'book_delete' book.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="{% url 'download_book' book.id %}" class="btn btn-success btn-sm">Download</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No books available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'book_create' %}" class="btn btn-info btn-sm mb-4">Add New Book</a>
 
-    <h2>Authors</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Index</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for author in authors %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ author.name }}</td>
-                <td>
-                    <a href="{% url 'author_update' author.id %}">Edit</a> |
-                    <a href="{% url 'author_delete' author.id %}">Delete</a>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="3">No authors available.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <a href="{% url 'author_create' %}">Add New Author</a>
+        <!-- Authors Section -->
+        <h2 class="mb-3">Authors</h2>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for author in authors %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ author.name }}</td>
+                    <td>
+                        <a href="{% url 'author_update' author.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{% url 'author_delete' author.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center">No authors available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'author_create' %}" class="btn btn-info btn-sm mb-4">Add New Author</a>
 
-    <h2>Categories</h2>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Index</th>
-                <th>Name</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for category in categories %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
-                <td>{{ category.name }}</td>
-                <td>
-                    <a href="{% url 'category_update' category.id %}">Edit</a> |
-                    <a href="{% url 'category_delete' category.id %}">Delete</a>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="3">No categories available.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <a href="{% url 'category_create' %}">Add New Category</a>
+        <!-- Categories Section -->
+        <h2 class="mb-3">Categories</h2>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>
+                        <a href="{% url 'category_update' category.id %}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{% url 'category_delete' category.id %}" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center">No categories available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'category_create' %}" class="btn btn-info btn-sm">Add New Category</a>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

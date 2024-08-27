@@ -2,14 +2,23 @@
 <html>
 <head>
     <title>{% if form.instance.pk %}Edit Author{% else %}Add New Author{% endif %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>{% if form.instance.pk %}Edit Author{% else %}Add New Author{% endif %}</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'home' %}">Back to Home</a>
+    <div class="container mt-5">
+        <h1 class="mb-4">{% if form.instance.pk %}Edit Author{% else %}Add New Author{% endif %}</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'home' %}" class="btn btn-secondary">Back to Home</a>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
